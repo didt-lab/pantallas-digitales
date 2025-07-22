@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TechNdencias</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <meta http-equiv="refresh" content="300"> <!-- refresca cada 5 min -->
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f0f0f0;
+      max-width: 800px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="contenido">Cargando...</div>
+
+  <script>
+    fetch('latest.md')
+      .then(res => res.text())
+      .then(md => {
+        document.getElementById('contenido').innerHTML = marked.parse(md);
+      })
+      .catch(err => {
+        document.getElementById('contenido').innerHTML = 'Error al cargar el contenido.';
+      });
+  </script>
+</body>
+</html>
